@@ -1,0 +1,19 @@
+{
+    "name": "scrap/blog",
+    "description": "Egyszerű blog PHP MVC OOP gyakorláshoz",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "odoroliver",
+            "email": "scrapyvagyok@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

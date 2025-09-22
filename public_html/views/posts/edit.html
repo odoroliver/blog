@@ -1,0 +1,25 @@
+<main>
+  <div class="edit-container">
+    <h1>Bejegyzés szerkesztése</h1>
+    <form id="editForm" enctype="multipart/form-data" method="post">
+      <label for="title">Cím:</label>
+      <input type="text" id="title" name="title" required />
+
+      <label for="content">Tartalom:</label>
+      <textarea id="content" name="content" rows="8" required></textarea>
+
+      <label for="category_id">Kategória:</label>
+      <select name="category_id" id="category_id"></select>
+
+      <label for="image">Kép feltöltése:</label>
+      <input type="file" id="image" name="image" accept="image/*" />
+      <img id="imagePreview" alt="Jelenlegi kép" class="image-preview" />
+
+      <div id="admin-buttons" class="admin-buttons">
+        <button type="submit">Mentés</button>
+        <a href="/index" class="delete-btn">🗑️ Törlés</a>
+      </div>
+    </form>
+    <p id="message"></p>
+  </div>
+</main>

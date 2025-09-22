@@ -1,0 +1,1206 @@
+/* --------------------------------- */
+/* Global Styles */
+/* --------------------------------- */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-color: #f8f9fa;
+  --text-color: #333;
+  --accent-color: #28a745;
+  --error-color: #dc3545;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+#message {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  transition: opacity 0.3s ease;
+  background-color: white;
+  border: 1px solid var(--secondary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  min-height: 1.5rem;
+  font-size: 0.9rem;
+  margin-top: 1.5rem;
+}
+#message:empty {
+  opacity: 0;
+}
+
+.error {
+  background-color: #ee5b68;
+  color: white;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  min-height: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  max-width: 500px;
+  border: 1px solid var(--error-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.success {
+  background-color: var(--accent-color);
+  color: white;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  min-height: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  max-width: 500px;
+  border: 1px solid #0d6421;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* --------------------------------- */
+/* Navbar Styles */
+/* --------------------------------- */
+.navbar {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+.nav-links input#search-input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  width: 200px;
+  transition: width 0.3s ease;
+}
+
+.nav-links input#search-input:focus {
+  outline: none;
+  width: 250px;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+main {
+  padding-top: 60px; /* Padding for navbar height */
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
+
+/* --------------------------------- */
+/* Login Page Styles */
+/* --------------------------------- */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  padding: 1rem;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+#login-form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+#login-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#login-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#login-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#login-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+#login-form button:hover {
+  background-color: var(--accent-color);
+}
+
+/* --------------------------------- */
+/* Home Page Styles */
+/* --------------------------------- */
+.home-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#posts-container {
+  width: 800px;
+  background-color: white;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#posts-container > div.post-item {
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+#posts-container hr {
+  border: 0;
+  border-top: 1px solid var(--secondary-color);
+  margin: 1rem 0;
+}
+
+#posts-container h2 {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#posts-container .post-content {
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  transition: opacity 0.3s ease;
+}
+
+#posts-container .post-image {
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 1rem;
+  display: block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin: auto;
+}
+
+#posts-container .post-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  opacity: 0;
+  width: 0;
+  display: none;
+}
+
+#category-container {
+  width: 200px;
+  margin-left: 2rem;
+}
+
+#category_id {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+#category_id:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#pagination-container {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+#pagination-container button {
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+#pagination-container button:hover {
+  background-color: var(--accent-color);
+}
+
+#pagination-container button:disabled {
+  background-color: var(--secondary-color);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#pagination-container span {
+  margin: 0 1rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+/* --------------------------------- */
+/* Dashboard Styles */
+/* --------------------------------- */
+.dashboard-container {
+  display: flex;
+  min-height: calc(100vh - 60px); /* Navbar magasság levonása */
+  background-color: var(--background-color);
+}
+
+.sidebar {
+  width: 200px;
+  padding: 1.5rem;
+  border-right: 1px solid var(--secondary-color);
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.sidebar ul {
+  list-style: none;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar li {
+  margin-bottom: 0rem;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.sidebar a.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* --------------------------------- */
+/* Posts Page Styles (Dashboard) */
+/* --------------------------------- */
+.outer-post-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dashboard-post-container {
+  display: flex;
+  max-width: 1200px;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.table-container {
+  flex: 1;
+}
+
+#posts-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#posts-table th,
+#posts-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+#posts-table th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+}
+
+#posts-table td {
+  color: var(--text-color);
+}
+
+#posts-table tr:hover {
+  background-color: var(--background-color);
+}
+
+.select-container {
+  width: 200px;
+}
+
+a[href="/create"] {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+a[href="/create"]:hover {
+  background-color: var(--accent-color);
+}
+
+/* --------------------------------- */
+/* Create Page Styles */
+/* --------------------------------- */
+.create-container {
+  min-height: calc(100vh - 60px);
+  background-color: var(--background-color);
+  padding: 1rem;
+}
+
+.create-container h1 {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+#create-form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+#create-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#create-form input,
+#create-form textarea,
+#create-form select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#create-form textarea {
+  resize: vertical; /* Csak függőlegesen méretezhető */
+  min-height: 100px;
+}
+
+#create-form input:focus,
+#create-form textarea:focus,
+#create-form select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#create-form input[type="file"] {
+  padding: 0.5rem;
+  border: none;
+}
+
+#create-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#create-form button:hover {
+  background-color: var(--accent-color);
+}
+
+/* --------------------------------- */
+/* Categories Page Styles (Dashboard) */
+/* --------------------------------- */
+.categories-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+a[href="/create-category"] {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+a[href="/create-category"]:hover {
+  background-color: var(--accent-color);
+}
+
+#categories-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#categories-table th,
+#categories-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+#categories-table th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+}
+
+#categories-table td {
+  color: var(--text-color);
+}
+
+#categories-table tr:hover {
+  background-color: var(--background-color);
+}
+
+#categories-table .edit-btn,
+#categories-table .delete-btn {
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#categories-table .edit-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#categories-table .edit-btn:hover {
+  background-color: var(--accent-color);
+}
+
+#categories-table .delete-btn {
+  background-color: var(--error-color);
+  color: white;
+}
+
+#categories-table .delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* --------------------------------- */
+/* Create Category Page Styles */
+/* --------------------------------- */
+.create-category-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 60px);
+  background-color: var(--background-color);
+  padding: 1rem;
+}
+
+.create-category-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+#category-form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+#category-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#category-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#category-form input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#category-form button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#category-form button:hover {
+  background-color: var(--accent-color);
+}
+
+/* --------------------------------- */
+/* Edit Category Page Styles */
+/* --------------------------------- */
+.edit-category-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 60px);
+  background-color: var(--background-color);
+  padding: 1rem;
+}
+
+.edit-category-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+#edit-category {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+#edit-category label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#edit-category input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#edit-category input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#edit-category button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#edit-category button[type="submit"]:hover {
+  background-color: var(--accent-color);
+}
+
+#edit-category .delete-btn button:hover {
+  background-color: var(--error-color);
+}
+
+/* --------------------------------- */
+/* Edit Post Page Styles */
+/* --------------------------------- */
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 60px);
+  background-color: var(--background-color);
+  padding: 1rem;
+}
+
+.edit-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+#editForm {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+#editForm label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#editForm input,
+#editForm textarea,
+#editForm select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#editForm textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#editForm input:focus,
+#editForm textarea:focus,
+#editForm select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#editForm input[type="file"] {
+  padding: 0.5rem;
+  border: none;
+}
+
+.image-preview {
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+}
+
+#editForm .image-preview {
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: none; /* Alapértelmezett rejtett, JS vezérli */
+  transition: transform 0.3s ease;
+}
+
+#editForm .image-preview:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#editForm button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#editForm button:hover {
+  background-color: var(--error-color);
+}
+
+#editForm button[type="submit"]:hover {
+  background-color: var(--accent-color);
+}
+
+.delete-btn button {
+  margin-top: 1rem;
+}
+
+.admin-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* --------------------------------- */
+/* Footer Styles */
+/* --------------------------------- */
+.footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 2rem 1rem;
+  width: 100%;
+  border-top: 1px solid var(--secondary-color);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-brand .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.footer-links {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-links h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent-color);
+}
+
+.footer-social {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-social h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--accent-color);
+  transform: scale(1.2); /* Kicsi nagyítás hover-re */
+}
+
+/* --------------------------------- */
+/* Responsive Styles */
+/* --------------------------------- */
+@media (max-width: 768px) {
+  /* Navbar */
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links input#search-input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Login Page */
+  .login-container {
+    padding: 0.5rem;
+  }
+
+  #login-form {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .login-container h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Home Page */
+  .home-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  #posts-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  #category-container {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+
+  #category_id {
+    width: 100%;
+  }
+
+  #posts-container h2 {
+    font-size: 1.3rem;
+  }
+
+  #posts-container .post-image {
+    max-width: 150px;
+  }
+
+  #pagination-container button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  #pagination-container span {
+    font-size: 0.8rem;
+  }
+
+  /* Dashboard */
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--secondary-color);
+  }
+
+  .dashboard-content {
+    padding: 1rem;
+  }
+
+  /* Posts Page (Dashboard) */
+  .outer-post-container {
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .dashboard-post-container {
+    flex-direction: column;
+    gap: 1rem;
+    margin: auto;
+  }
+
+  .select-container {
+    width: 100%;
+  }
+
+  #posts-table th,
+  #posts-table td {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* Create Page */
+  .create-container {
+    padding: 0.5rem;
+  }
+
+  #create-form {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .create-container h1 {
+    font-size: 1.5rem;
+  }
+
+  /* Categories Page */
+  .categories-container {
+    padding: 0.5rem;
+  }
+
+  #categories-table th,
+  #categories-table td {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* Edit Post Page */
+  .edit-container {
+    padding: 0.5rem;
+  }
+
+  #editForm {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .edit-container h1 {
+    font-size: 1.5rem;
+  }
+
+  #editForm .image-preview {
+    max-width: 150px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-social {
+    min-width: 100%;
+  }
+
+  .footer-links ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}

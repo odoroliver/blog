@@ -1,0 +1,21 @@
+<main>
+  <div class="create-container">
+    <form id="create-form" enctype="multipart/form-data" method="post">
+      <h1 style="text-align: center">Új poszt létrehozása</h1>
+      <label for="title">Cím:</label>
+      <input type="text" id="title" name="title" required />
+
+      <label for="content">Tartalom:</label>
+      <textarea id="content" name="content" rows="5" required></textarea>
+
+      <label for="category_id">Kategória:</label>
+      <select name="category_id" id="category_id"></select>
+
+      <label for="image">Kép feltöltése:</label>
+      <input type="file" id="image" name="image" accept="image/*" />
+
+      <button type="submit">Mentés</button>
+    </form>
+    <p id="message"></p>
+  </div>
+</main>
