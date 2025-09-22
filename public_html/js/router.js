@@ -61,6 +61,7 @@ export async function route() {
   let loadPlace = document.getElementById("app");
 
   const adminViews = ["edit", "create", "create-category", "edit-category"];
+  const validPublicViews = ["index", "login"];
 
   try {
     if (path === "admin" || adminViews.includes(path)) {
@@ -75,11 +76,13 @@ export async function route() {
           await loadView(`categories/${path}`, dashboardContent);
         }
       }
-    } else {
+    } else if (validPublicViews.includes(path)) {
       // publikus nézetek
       if (path === "index") folder = "posts/";
       await loadView(`${folder}${path}`, loadPlace);
-    }
+    } else {
+		await loadView("errors/404", loadPlace);
+	}
 
     switch (path) {
       case "edit":
