@@ -131,7 +131,7 @@ class PostControllerAPI
         ];
 
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $uploadDir = __DIR__ . '/../../../public/uploads/';
+            $uploadDir = __DIR__ . '/../../../public_html/uploads/';
             $filename = uniqid() . '-' . basename($_FILES['image']['name']);
             $targetPath = $uploadDir . $filename;
 
@@ -180,7 +180,7 @@ class PostControllerAPI
         }
 
         if (!empty($existingPost['image'])) {
-            $imagePath = __DIR__ . '/../../../public/' . $existingPost['image'];
+            $imagePath = __DIR__ . '/../../../public_html/' . $existingPost['image'];
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
@@ -212,7 +212,7 @@ class PostControllerAPI
         }
 
         if (!empty($existingPost['image'])) {
-            $imagePath = __DIR__ . '/../../../public/' . $existingPost['image'];
+            $imagePath = __DIR__ . '/../../../public_html/' . $existingPost['image'];
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }

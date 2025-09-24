@@ -87,14 +87,19 @@ export async function loadPosts(
     postEl.innerHTML = `
     <hr>
     <h2>${escapeHtml(post.title)}</h2>
-    <p class="post-content hidden">${escapeHtml(post.content).replace(
-      /\n/g,
-      "<br>"
-    )}</p>
     ${
       post.image
-        ? `<img src="${post.image}" alt="Post image" class="post-image">`
-        : ""
+        ? `
+        <img src="${post.image}" alt="Post image" class="post-image">
+        <p class="post-content hidden">${escapeHtml(post.content).replace(
+          /\n/g,
+          "<br>"
+        )}</p>
+        `
+        : `<p class="post-content">${escapeHtml(post.content).replace(
+            /\n/g,
+            "<br>"
+          )}</p>`
     }
   `;
 
@@ -105,6 +110,8 @@ export async function loadPosts(
       if (content && image) {
         content.classList.toggle("hidden");
         image.classList.toggle("hidden");
+      } else if (content) {
+        content.classList.toggle("hidden");
       }
     });
 
